@@ -1,1 +1,1 @@
-[README](https://github.com/dmparrishphd/panzoom-CORW).
+[README](https://github.com/dmparrishphd/panzoom-CORW#readme).
