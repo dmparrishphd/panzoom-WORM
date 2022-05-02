@@ -1,1 +1,1 @@
-[README](https://github.com/dmparrishphd/panzoom-WORM).
+[README](https://github.com/dmparrishphd/panzoom-CORW).
