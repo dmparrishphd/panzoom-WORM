@@ -1,0 +1,1 @@
+usrCenter <- function () usrCenDim ( mean )
