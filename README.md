@@ -1,2 +1,1 @@
-# panzoom-WORM
-pan and zoom in the R user coordinate space
+[README](https://github.com/dmparrishphd/panzoom-WORM).
