@@ -1,0 +1,86 @@
+               o3615150142220537116325221634033616471743252/HELP
+________________________________________________________________
+
+                                                         panzoom
+================================================================
+
+Adjust the user coordinates associated with a plot.
+
+                                                           Usage
+----------------------------------------------------------------
+
+attach (
+	what = source ( pathname ) [[ 1 ]] ,
+	name = "protoPkg:panzoom" )
+panTo(x, y)
+resetAspect(x, y = x)
+zoom(factor = 1)
+
+                                                       Arguments
+----------------------------------------------------------------
+
+factor: the magnification factor by which to zoom.
+
+x: for panTo, specifies the x-coord at which the
+plot should be centered; for resetAspect,
+specifies the relative scale in the x-direction.
+
+y: for panTo, specifies the y-coord at which the
+plot should be centered; for resetAspect,
+specifies the relative scale in the y-direction.
+
+                                                           Value
+----------------------------------------------------------------
+
+The panTo, resetAspect, and zoom functions all
+return NULL invisibly.
+
+                                                         Details
+----------------------------------------------------------------
+
+The resetAspect function has no knowledge of the
+meaning of the user coordinates (e.g., "x" might
+be lateral distance in kilometers, and "y" might
+be height in meters---a vertical exaggeration of
+1000); the application of resetAspect will need
+to account for this fact independently.
+
+                                                    Known Issues
+----------------------------------------------------------------
+
+If the device has other than a single figure,
+expect strange behavior.
+
+Resizing the device (e.g., an interactive
+graphics window) may alter the plot and cause
+the state previously arrived at by a call to
+panTo, resetAspect, or zoom to expire.
+
+                                                        Examples
+----------------------------------------------------------------
+
+
+attach (
+	what = source ( pathname ) [[ 1 ]] ,
+	name = "protoPkg:panzoom" )
+
+redraw <- function() {
+    rect(0, 0, 1, 1, col = "royalblue" , border = "navy")
+    USR <- par ( "usr" )
+    X <- mean ( USR [ 1 : 2 ] )
+    Y <- mean ( USR [ 3 : 4 ] )
+    axis ( 1 , pos = Y )
+    axis ( 2 , pos = X ) }
+
+dev.new()
+plot(1)
+par(mfrow = c(1, 1))
+plot(0:1, col = NA)
+
+resetAspect(1); redraw()
+resetAspect(1, 2); redraw()
+resetAspect(2, 1); redraw()
+resetAspect(1); redraw()
+zoom(2); redraw()
+panTo(0.5, 0.5); redraw()
+zoom(0.5); redraw()
